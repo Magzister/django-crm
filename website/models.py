@@ -6,3 +6,6 @@ class Record(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
     phone = models.CharField(max_length=15)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
