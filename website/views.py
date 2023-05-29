@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
+from .models import Record
 
 
 def home(request):
@@ -15,7 +16,9 @@ def home(request):
         else:
             messages.error(request, 'There was an error, please try again...')
         return redirect('home')
-    return render(request, 'home.html', {})
+
+    records = Record.objects.all()
+    return render(request, 'home.html', {'records':records})
 
 
 def logout_user(request):
