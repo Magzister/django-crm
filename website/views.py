@@ -50,3 +50,13 @@ def customer_record(request, pk):
         return render(request, 'record.html', {'customer_record':customer_record})
     messages.error(request, 'You must be logged in to view this page!')
     return redirect('home')
+
+
+def delete_record(request, pk):
+    if request.user.is_authenticated:
+        delete_it = Record.objects.get(id=pk)
+        delete_it.delete()
+        messages.error(request, 'Record deleted seccessfully!')
+        return redirect('home')
+    messages.error(request, 'You must be logged in to view this page!')
+    return redirect('home')
