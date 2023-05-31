@@ -8,7 +8,8 @@
         {% csrf_token %}
         {{ form.as_p }}
         <br/>
-        <button type="submit" class="btn btn-secondary">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{% url 'record' record.id%}" class="btn btn-secondary">Back</a>
     </form>
 
 {% endblock %}

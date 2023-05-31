@@ -83,6 +83,6 @@ def update_record(request, pk):
             form.save()
             messages.success(request, "Record saved!")
             return redirect('home')
-        return render(request, 'update_record.html', {'form':form})
+        return render(request, 'update_record.html', {'form':form, 'record': current_record})
     messages.success(request, 'You must be logged in to view this page!')
     return redirect('home')
